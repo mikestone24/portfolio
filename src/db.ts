@@ -21,25 +21,6 @@ export function getMenuItems(): MenuItemProps[] {
             href: '#',
             text: 'Home',
         },
-        {
-            id: 'react-docs',
-            href: 'https://reactjs.org/',
-            text: 'React Docs',
-        },
-        {
-            id: 'typescript-docs',
-            href: 'https://www.typescriptlang.org/',
-            text: 'TypeScript Docs',
-        },
-        {
-            id: 'ceriously',
-            href: 'https://www.ceriously.com',
-            text: 'Ceriously',
-        },
-        {
-            id: 'github',
-            href: 'https://github.com/styfle/react-server-example-tsx',
-            text: 'Fork Me',
-        },
+      
     ];
 }

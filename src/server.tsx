@@ -40,8 +40,10 @@ createServer(async (req, res) => {
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="${faviconUrl}" rel="icon" type="image/x-icon" />
+                <link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+
                 <title>React Example</title>
-                <link rel="stylesheet" href="${stylesUrl}" />
+              
             </head>
             <body>
             <div id="${containerId}">`);
