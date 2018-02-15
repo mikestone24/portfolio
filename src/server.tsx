@@ -6,6 +6,9 @@ import App from './components/app';
 import { fetchProps } from './props';
 import { lookup } from './mime-types';
 import { control } from './cache-control';
+var ma=""
+if (process.env.WEBPACK) ma=require('./styles/index.scss');
+//import './styles/index.scss';
 import {
     faviconUrl,
     stylesUrl,
@@ -16,7 +19,7 @@ import {
     propsUrl,
     containerId,
 } from './constants';
-
+console.log(ma)
 console.log('Server booting...');
 const isProd = process.env.NODE_ENV === 'production';
 console.log('Production optimization enabled? ', isProd);
@@ -42,8 +45,8 @@ createServer(async (req, res) => {
                 <link href="${faviconUrl}" rel="icon" type="image/x-icon" />
                 <link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
 
-                <title>React Example</title>
-              
+                <title>Mike Stone Codes</title>
+
             </head>
             <body>
             <div id="${containerId}">`);

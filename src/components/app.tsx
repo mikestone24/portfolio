@@ -13,26 +13,12 @@ import {
   Segment,
   Visibility,
 } from 'semantic-ui-react'
-const FixedMenu = () => (
-<Menu fixed='top' size='large'>
-<Container>
-  <Menu.Item as='a' active>Home</Menu.Item>
-  <Menu.Item as='a'>Work</Menu.Item>
-  <Menu.Item as='a'>Company</Menu.Item>
-  <Menu.Item as='a'>Careers</Menu.Item>
-  <Menu.Menu position='right'>
-    <Menu.Item className='item'>
-      <Button as='a'>Log in</Button>
-    </Menu.Item>
-    <Menu.Item>
-      <Button as='a' primary>Sign Up</Button>
-    </Menu.Item>
-  </Menu.Menu>
-</Container>
-</Menu>
-)
+
+
+import MasonryInfiniteScroller from 'react-masonry-infinite';
+if (process.env.WEBPACK)require('../styles/index.scss');
 interface AppState {
-    listItems: string[];
+    listItems: { years:string,description:string,picture:string}[];
     disabled: boolean;
     visible: boolean;
 }
@@ -51,94 +37,72 @@ export default class App extends React.Component<AppProps, AppState> {
         this.setState({ disabled: false });
     }
 
-    // Update the state whenever its clicked by adding a new item to
-    // the list - imagine this being updated with the results of AJAX calls, etc
-    handleAdd = () => {
-        this.setState(prevState => ({
-            listItems: prevState.listItems.concat('Item ' + prevState.listItems.length),
-        }));
-    };
-
-    handleSort = () => {
-        this.setState(prevState => ({
-            listItems: prevState.listItems.sort(),
-        }));
-    };
-
-    hideFixedMenu = () => this.setState({ visible: false })
-    showFixedMenu = () => this.setState({ visible: true })
 
     render() {
         const { menuItems } = this.props;
         const { listItems, disabled } = this.state;
         const { visible } = this.state
+        let timeline=  <section id='timeline'>
+    	  <div className="demo-card-wrapper">
+      {
+        this.state.listItems.map( (card,index) =>
+          <div className= {`demo-card demo-card--step${index+1}`}   >
+            <div className="head">
+              <div className="number-box">
+                {card.years}
+              </div>
+              <h2>{card.name}</h2>
+            </div>
+            <div className="body">
+
+              <img src={card.picture} alt="Graphic" ></img>
+
+            </div>
+            <div className="description">{card.description}</div>
+          </div>
+        )
+      }
+
+
+
+    </div>
+
+       </section>
 
         return (
-          <div>
 
 
-
+  <div>
       <Segment
         inverted
-        textAlign='center'
-        style={{ minHeight: 700, padding: '1em 0em' }}
+        textAlign='left'
         vertical
       >
 
 
-        <Container text>
+        <div text style={{marginLeft:'10px'}}>
           <Header
             as='h1'
             content='Mike Stone'
             inverted
-            style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
+            style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0}}
           />
           <Header
             as='h2'
-            content='Web frontend and games'
+            content='Full Stack Development // Games'
             inverted
             style={{ fontSize: '1.7em', fontWeight: 'normal' }}
           />
-          <Button primary size='huge'>
-            Portfolio
-          </Button>
-        </Container>
+
+        </div>
       </Segment>
 
-
-    <Segment style={{ padding: '8em 0em' }} vertical>
-      <Grid container stackable verticalAlign='middle'>
-        <Grid.Row>
-          <Grid.Column width={8}>
-
-          </Grid.Column>
-          <Grid.Column floated='right' width={6}>
-
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column textAlign='center'>
-
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
-    <Segment style={{ padding: '0em' }} vertical>
-      <Grid celled='internally' columns='equal' stackable>
-        <Grid.Row textAlign='center'>
-          <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+     {timeline}
 
 
-          </Grid.Column>
-          <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
 
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
-    <Segment style={{ padding: '8em 0em' }} vertical>
-    
-    </Segment>
+
+
   </div>
         );
     }

@@ -16,9 +16,12 @@
   },
   "license": "MIT",
   "dependencies": {
+    "css-loader": "^0.28.9",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "semantic-ui-react": "^0.77.2"
+    "react-masonry-infinite": "^1.2.2",
+    "semantic-ui-react": "^0.77.2",
+    "style-loader": "^0.20.1"
   },
   "devDependencies": {
     "@types/node": "^8.5.2",
@@ -26,11 +29,14 @@
     "@types/react-dom": "^16.0.3",
     "@types/tape": "^4.2.31",
     "awesome-typescript-loader": "^3.4.1",
+    "node-sass": "^4.7.2",
     "prettier": "1.10.2",
+    "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.3",
     "tape": "^4.8.0",
     "typescript": "^2.6.2",
-    "webpack": "^3.10.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.11.0",
     "webpack-node-externals": "^1.6.0"
   }
 }
