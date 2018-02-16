@@ -12,13 +12,14 @@ import {
   Menu,
   Segment,
   Visibility,
+  Label,
 } from 'semantic-ui-react'
 
 
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 if (process.env.WEBPACK)require('../styles/index.scss');
 interface AppState {
-    listItems: { years:string,description:string,picture:string}[];
+    listItems: {name:string,years:string,description:string,picture:string,title:string,link:string}[];
     disabled: boolean;
     visible: boolean;
 }
@@ -42,16 +43,23 @@ export default class App extends React.Component<AppProps, AppState> {
         const { menuItems } = this.props;
         const { listItems, disabled } = this.state;
         const { visible } = this.state
+
+const colors = [
+  'red', 'orange', 'yellow', 'olive', 'green', 'teal',
+  'blue', 'violet', 'purple', 'pink', 'brown',
+]
         let timeline=  <section id='timeline'>
     	  <div className="demo-card-wrapper">
       {
         this.state.listItems.map( (card,index) =>
+
           <div className= {`demo-card demo-card--step${index+1}`}   >
+            <a href={card.link}>
             <div className="head">
               <div className="number-box">
                 {card.years}
               </div>
-              <h2>{card.name}</h2>
+              <h2>{card.name} <span>{card.title}</span> </h2>
             </div>
             <div className="body">
 
@@ -59,7 +67,9 @@ export default class App extends React.Component<AppProps, AppState> {
 
             </div>
             <div className="description">{card.description}</div>
+              </a>
           </div>
+
         )
       }
 
@@ -75,27 +85,74 @@ export default class App extends React.Component<AppProps, AppState> {
   <div>
       <Segment
         inverted
-        textAlign='left'
+
         vertical
       >
 
 
-        <div text style={{marginLeft:'10px'}}>
-          <Header
-            as='h1'
-            content='Mike Stone'
-            inverted
-            style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0}}
-          />
-          <Header
-            as='h2'
-            content='Full Stack Development // Games'
-            inverted
-            style={{ fontSize: '1.7em', fontWeight: 'normal' }}
-          />
+        <div style={{marginLeft:'10px'}}>
+
+
+        <Segment inverted clearing style={{marginBottom:'0px', padding:'0px', paddingLeft:'0px'}}>
+        <Header as='h1' floated='left' style={{ fontSize: '4em', fontWeight: 'normal',marginBottom:"0px";}}>
+            Mike Stone
+
+        </Header>
+
+      <Header as='h1' floated='right' style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0}}>
+
+      <Label size='massive' as='a'>
+      <Icon name='github' />
+        Github
+        </Label>
+
+      <Label size='massive' as='a'>
+      <Icon name='mail' />
+       Contact
+    </Label>
+
+
+      </Header>
+
+    </Segment>
+
+
+
+
 
         </div>
       </Segment>
+
+
+      <Segment
+        inverted
+        textAlign='center'
+        vertical
+
+        style={{backgroundColor:"#383838",padding:'20px'}}
+      >
+      <p   style={{ fontSize: '1.8em', fontWeight: 'normal',marginBottom:'5px' }}>For the last 14 years I have coded websites and games. I can help build your next project!</p>
+      <Divider inverted/>
+      <Label.Group size='big' style={{marginTop:'10px'}}  >
+      {
+        ['react.js','html5','canvas','phaser','node.js','php','javascript','ruby on rails','mongodb','redis','svg','websockets'].map( (card,inde)=>
+           <Label basic
+           color={colors[inde%colors.length]}
+
+           style={{ boxShadow: "0px 1px 22px 4px rgba(0, 0, 0, 0.07)" } }
+           >{card}</Label>
+        )
+
+      }
+      </Label.Group>
+
+
+
+
+
+  </Segment>
+
+
 
      {timeline}
 

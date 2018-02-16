@@ -14,7 +14,7 @@ declare module "react-masonry-infinite" {
 }
 
 interface AppProps {
-    listItems: {years:string,description:string,picture:string}[]
+    listItems:  {name:string,years:string,description:string,picture:string,title:string,link:string}[]
     menuItems: MenuItemProps[];
 }
 

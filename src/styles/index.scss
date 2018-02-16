@@ -196,10 +196,10 @@ body {
     .description {
       position: absolute;
       margin-top: 10px;
-      background: rgba(245,251,255,0.4);
+    //  background: rgba(20,20,20,0.15);
       text-align: center;
       width:( $card-width ) ;
-      color:rgba(12,8,0,1);
+      color:white;
         font-size: 1.2em;
       padding: 15px;
     }
@@ -230,12 +230,13 @@ body {
         line-height: 1rem;
         @include mq-sm {
           font-size: 165%;
-          line-height: 2rem;
+          line-height: 1.5rem;
         }
         span {
           display: block;
           font-size: 0.6rem;
           margin: 0;
+          margin-left: 3px;
           @include mq-sm {
             font-size: 0.8rem;
           }
