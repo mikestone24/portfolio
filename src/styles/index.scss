@@ -32,7 +32,7 @@ $rows: ceil($items/2);
 
 /* Card sizing */
 
-$card-height: 450px;
+$card-height: 400px;
 $card-width: 450px;
 $inner-margin: 15px;
 $number-size: 35px;
@@ -104,7 +104,25 @@ $counter: $items - $rows + 2;
 body {
   font-family: Roboto;
 }
+.mikestone{
+  text-align: center;
+  width: 100%;
+  margin: 0px;
+  @include mq-lg {
+    width: inherit;
+    margin-left: 10px !important;
+  }
 
+}
+.contact{
+  text-align: center;
+  width: 100%;
+  margin: 0px !important;
+  @include mq-lg {
+    width: inherit;
+    margin-right: 10px !important;
+  }
+}
 #timeline {
   background: $background;
   border-top: $border;
@@ -144,6 +162,7 @@ body {
       }
     }
   }
+
   .demo-card {
     position: relative;
     display: block;
@@ -151,15 +170,15 @@ body {
     max-width: 94%;
     z-index: 2;
     @include mq-sm {
-      max-width: 60%;
+      max-width: 80%;
       box-shadow: $box-shadow;
     }
     @include mq-md {
-      max-width: 40%;
+      max-width: 60%;
     }
     @include mq-lg {
       max-width: $card-width;
-      height: $card-height;
+    //  height: $card-height;
       margin: $outer-margin;
       margin-top: $outer-margin/2;
       margin-bottom: $outer-margin/2;
@@ -194,11 +213,10 @@ body {
       }
     }
     .description {
-      position: absolute;
-      margin-top: 10px;
+
     //  background: rgba(20,20,20,0.15);
       text-align: center;
-      width:( $card-width ) ;
+
       color:white;
         font-size: 1.2em;
       padding: 15px;
@@ -211,6 +229,16 @@ body {
       min-height: 85px;
       font-weight: 400;
       .number-box {
+        @include mq-xs {
+          font-size: 18px;
+        }
+        @include mq-sm {
+          font-size: 18px;
+        }
+        @include mq-md {
+          font-size: 18px;
+
+        }
         display: inline;
         float: left;
         margin: $inner-margin;

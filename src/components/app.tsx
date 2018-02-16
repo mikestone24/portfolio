@@ -83,30 +83,26 @@ const colors = [
 
 
   <div>
-      <Segment
-        inverted
-
-        vertical
-      >
+      <Segment inverted   vertical >
 
 
-        <div style={{marginLeft:'10px'}}>
+        <div>
 
 
         <Segment inverted clearing style={{marginBottom:'0px', padding:'0px', paddingLeft:'0px'}}>
-        <Header as='h1' floated='left' style={{ fontSize: '4em', fontWeight: 'normal',marginBottom:"0px";}}>
+        <Header as='h1' floated='left' className='mikestone' style={{ fontSize: '4em', fontWeight: 'normal',marginBottom:"0px"}}>
             Mike Stone
-
         </Header>
 
-      <Header as='h1' floated='right' style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0}}>
+      <Header as='h1' floated='right' className='contact'  style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0}}>
 
-      <Label size='massive' as='a'>
+      <Label size='massive' as='a' href='http://github.com/mikestonecodes'>
+
       <Icon name='github' />
         Github
         </Label>
 
-      <Label size='massive' as='a'>
+      <Label size='massive' as='a'  href='mailto:michaeljacobstone@gmail.com'>
       <Icon name='mail' />
        Contact
     </Label>
@@ -131,13 +127,17 @@ const colors = [
 
         style={{backgroundColor:"#383838",padding:'20px'}}
       >
-      <p   style={{ fontSize: '1.8em', fontWeight: 'normal',marginBottom:'5px' }}>For the last 14 years I have coded websites and games. I can help build your next project!</p>
+      <p   style={{ fontSize: '1.8em', fontWeight: 'normal',marginBottom:'5px'}}>
+      For the last 14 years I have coded websites and games. I can help build your next project!
+
+      </p>
+
       <Divider inverted/>
       <Label.Group size='big' style={{marginTop:'10px'}}  >
       {
         ['react.js','html5','canvas','phaser','node.js','php','javascript','ruby on rails','mongodb','redis','svg','websockets'].map( (card,inde)=>
            <Label basic
-           color={colors[inde%colors.length]}
+           color={""+colors[inde%colors.length]}
 
            style={{ boxShadow: "0px 1px 22px 4px rgba(0, 0, 0, 0.07)" } }
            >{card}</Label>
