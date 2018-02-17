@@ -6,8 +6,7 @@ import App from './components/app';
 import { fetchProps } from './props';
 import { lookup } from './mime-types';
 import { control } from './cache-control';
-var ma=""
-if (process.env.WEBPACK) ma=require('./styles/index.scss');
+var compress = require("compression")
 //import './styles/index.scss';
 import {
     faviconUrl,
@@ -19,7 +18,7 @@ import {
     propsUrl,
     containerId,
 } from './constants';
-console.log(ma)
+
 console.log('Server booting...');
 const isProd = process.env.NODE_ENV === 'production';
 console.log('Production optimization enabled? ', isProd);
@@ -28,6 +27,9 @@ const PORT = process.env.PORT || 3007;
 const suffix = isProd ? '.production.min.js' : '.development.js';
 
 createServer(async (req, res) => {
+  var noop = function(){}, useDefaultOptions = {}
+  compress(useDefaultOptions)(req,res,noop) // mutates the response object
+
     let { httpVersion, method, url } = req;
     console.log(`${httpVersion} ${method} ${url}`);
     if (!url || url === '/') {
@@ -35,6 +37,7 @@ createServer(async (req, res) => {
     }
     try {
         if (url === 'index.html') {
+          
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 1));
             res.write(`<!DOCTYPE html>
@@ -75,7 +78,7 @@ createServer(async (req, res) => {
             res.setHeader('Cache-Control', control(isProd, 7));
             const file = `./src/${url}`;
             createReadStream(file).pipe(res);
-        } else if (url === browserUrl || url === browserMapUrl) {
+        } else if (url === browserUrl || url === browserMapUrl){
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
             const file = `./dist${url}`;

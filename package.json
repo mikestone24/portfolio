@@ -16,7 +16,12 @@
   },
   "license": "MIT",
   "dependencies": {
+    "compression": "^1.7.1",
     "css-loader": "^0.28.9",
+    "gzip": "^0.1.0",
+    "http-gzip": "^1.0.0",
+    "http-gzip-maybe": "^1.0.0",
+    "pump": "^3.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-masonry-infinite": "^1.2.2",
