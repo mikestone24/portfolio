@@ -1,23 +1,16 @@
 import * as React from 'react';
 
 import {
-  Button,
-  Container,
   Divider,
-  Grid,
   Header,
   Icon,
   Image,
-  List,
-  Menu,
   Segment,
-  Visibility,
   Label,
 } from 'semantic-ui-react'
 
 
-import MasonryInfiniteScroller from 'react-masonry-infinite';
-if (process.env.WEBPACK)require('../styles/index.scss');
+
 interface AppState {
     listItems: {name:string,years:string,description:string,picture:string,title:string,link:string}[];
     disabled: boolean;
@@ -25,6 +18,7 @@ interface AppState {
 }
 
 export default class App extends React.Component<AppProps, AppState> {
+    removeCss:any;
     constructor(props: AppProps) {
         super(props);
         // We initialise its state by using the `props` that were passed in when it
@@ -40,7 +34,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
 
     render() {
-        const { menuItems } = this.props;
+
         const { listItems, disabled } = this.state;
         const { visible } = this.state
 
@@ -137,7 +131,7 @@ const colors = [
       {
         ['react.js','html5','canvas','phaser','node.js','php','javascript','ruby on rails','mongodb','redis','svg','websockets'].map( (card,inde)=>
            <Label basic
-           color={""+colors[inde%colors.length]}
+           color={colors[inde%colors.length] }
 
            style={{ boxShadow: "0px 1px 22px 4px rgba(0, 0, 0, 0.07)" } }
            >{card}</Label>

@@ -79,16 +79,3 @@ export function getListItems(): {name:string,years:string,description:string,pic
 
     ];
 }
-
-export function getMenuItems(): MenuItemProps[] {
-    // These menu items represent each <li>
-    // in the top menu bar, typically static data
-    return [
-        {
-            id: 'home',
-            href: '#',
-            text: 'Home',
-        },
-
-    ];
-}

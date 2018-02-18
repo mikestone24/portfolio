@@ -1,5 +1,5 @@
-import { getListItems, getMenuItems } from './db';
+import { getListItems} from './db';
 
 export function fetchProps(): AppProps {
-    return { listItems: getListItems(), menuItems: getMenuItems() };
+    return { listItems: getListItems() };
 }

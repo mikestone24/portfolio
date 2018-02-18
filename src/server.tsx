@@ -6,6 +6,8 @@ import App from './components/app';
 import { fetchProps } from './props';
 import { lookup } from './mime-types';
 import { control } from './cache-control';
+
+const styles= require('./styles/index.scss');
 var zlib = require('zlib');
 var compress = require("compression")
 //import './styles/index.scss';
@@ -39,6 +41,8 @@ createServer(async (req, res) => {
     try {
 
         if (url === 'index.html') {
+           const css = new Set();
+           console.log(styles._getCss())
 
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 1));
@@ -48,13 +52,13 @@ createServer(async (req, res) => {
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="${faviconUrl}" rel="icon" type="image/x-icon" />
-                <link  onload="if(media!='all')media='all'"  async async rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
 
                 <title>Mike Stone Codes</title>
-
+                 <style type="text/css">${styles._getCss()}</style>
             </head>
             <body>
             <div id="${containerId}">`);
+
             const stream = renderToNodeStream(AppFactory(fetchProps()));
             stream.pipe(res, { end: false });
             stream.on('end', () => {

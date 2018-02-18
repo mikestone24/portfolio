@@ -1,7 +1,7 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
 module.exports = [
     {
         entry: {
@@ -23,8 +23,15 @@ module.exports = [
         module: {
             loaders: [
               {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
+      },
+              {
              test:/\.(s*)css$/,
-             use:['style-loader','css-loader', 'sass-loader']
+            loader:'isomorphic-style-loader!css-loader!sass-loader'
           },
                 {
                     test: /\.tsx?$/,
@@ -32,7 +39,7 @@ module.exports = [
                 },
             ],
         },
-        plugins: [ new UglifyJsPlugin(),new CheckerPlugin(),new webpack.DefinePlugin({
+        plugins: [new CheckerPlugin(),new webpack.DefinePlugin({
         'process.env': {
             WEBPACK: JSON.stringify(true),
         }
@@ -62,8 +69,15 @@ module.exports = [
         module: {
             loaders: [
               {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
+      },
+              {
                test:/\.(s*)css$/,
-               use:['style-loader','css-loader', 'sass-loader']
+                loader:'isomorphic-style-loader!css-loader!sass-loader'
             },
                 {
                     test: /\.tsx?$/,
