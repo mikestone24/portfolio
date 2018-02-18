@@ -127,7 +127,7 @@ const colors = [
       </p>
 
       <Divider inverted/>
-      <Label.Group size='big' style={{marginTop:'10px'}}  >
+      <Label.Group size='big' className='skills' style={{marginTop:'10px'}}  >
       {
         ['react.js','html5','canvas','phaser','node.js','php','javascript','ruby on rails','mongodb','redis','svg','websockets'].map( (card,inde)=>
            <Label basic

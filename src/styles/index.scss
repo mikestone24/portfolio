@@ -129,11 +129,13 @@ body {
   }
 
 }
-.label {
+.skills {
+ .label {
   font-size: 1rem !important;
   @include mq-lg {
     font-size: 1.28571429rem !important;
   }
+}
 }
 .contact{
   text-align: center;
