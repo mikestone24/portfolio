@@ -15,6 +15,9 @@ Image,
 Segment,
 Label,
 */
+body{
+  font-family: Lato,Helvetica Neue,Arial,Helvetica,sans-serif;
+}
 @mixin mq-xs {
   @media (min-width: 320px) {
     @content;
@@ -131,6 +134,7 @@ body {
 }
 .skills {
  .label {
+   font-family: Lato,Helvetica Neue,Arial,Helvetica,sans-serif;
   font-size: 1rem !important;
   @include mq-lg {
     font-size: 1.28571429rem !important;
