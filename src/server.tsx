@@ -42,7 +42,7 @@ createServer(async (req, res) => {
 
         if (url === 'index.html') {
            const css = new Set();
-           console.log(styles._getCss())
+
 
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 1));

@@ -1,7 +1,7 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
-
+  const UglifyJsPlugin  = require('uglifyjs-webpack-plugin');
 module.exports = [
     {
         entry: {
@@ -43,7 +43,7 @@ module.exports = [
         'process.env': {
             WEBPACK: JSON.stringify(true),
         }
-    }) ],
+    }),  new UglifyJsPlugin() ],
         externals: {
             react: 'React',
             'react-dom': 'ReactDOM',
@@ -85,7 +85,7 @@ module.exports = [
                 },
             ],
         },
-        plugins: [new CheckerPlugin()],
+        plugins: [new CheckerPlugin(),  new UglifyJsPlugin()],
         target: 'node',
         externals: [nodeExternals()],
     },
