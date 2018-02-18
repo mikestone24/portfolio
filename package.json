@@ -26,7 +26,8 @@
     "react-dom": "^16.2.0",
     "react-masonry-infinite": "^1.2.2",
     "semantic-ui-react": "^0.77.2",
-    "style-loader": "^0.20.1"
+    "style-loader": "^0.20.1",
+    "zlib": "^1.0.5"
   },
   "devDependencies": {
     "@types/node": "^8.5.2",

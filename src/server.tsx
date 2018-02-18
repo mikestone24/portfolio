@@ -6,6 +6,7 @@ import App from './components/app';
 import { fetchProps } from './props';
 import { lookup } from './mime-types';
 import { control } from './cache-control';
+var zlib = require('zlib');
 var compress = require("compression")
 //import './styles/index.scss';
 import {
@@ -37,7 +38,7 @@ createServer(async (req, res) => {
     }
     try {
         if (url === 'index.html') {
-          
+
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 1));
             res.write(`<!DOCTYPE html>
@@ -72,17 +73,17 @@ createServer(async (req, res) => {
             res.setHeader('Cache-Control', control(isProd, 7));
             const name = url.replace('.js', '');
             const file = `./node_modules${name}/umd${name}${suffix}`;
-            createReadStream(file).pipe(res);
+            createReadStream(file).pipe(zlib.createGzip()).pipe(res);
         } else if (url === stylesUrl) {
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
             const file = `./src/${url}`;
-            createReadStream(file).pipe(res);
+            createReadStream(file).pipe(zlib.createGzip()).pipe(res);
         } else if (url === browserUrl || url === browserMapUrl){
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
             const file = `./dist${url}`;
-            createReadStream(file).pipe(res);
+            createReadStream(file).pipe(zlib.createGzip()).pipe(res);
         } else {
             url = 'notfound.txt';
             res.setHeader('Content-Type', lookup(url));
