@@ -8,7 +8,7 @@ export function getListItems(): {name:string,years:string,description:string,pic
           name:'crossinstall',
           years:"2016-2018",
           description:"Programmed interactive ads",
-          picture:"http://mikestonecodes.github.io/crossinstall.jpg",
+          picture:"https://i.imgur.com/bob6eM6.jpg",
           title:'Software Engineer',
           link:"http://crossinstall.com"
         },
@@ -16,7 +16,7 @@ export function getListItems(): {name:string,years:string,description:string,pic
           name:'onpointdelivers',
           years:"2016",
           description:"Worked with investors to create a delivery service",
-          picture:"http://mikestonecodes.github.io/onpoint.jpg",
+          picture:"https://i.imgur.com/ThIONEm.jpg",
           title:'Senior Technical Lead',
           link:"http://onpointdelivers.com"
         },
@@ -32,14 +32,14 @@ export function getListItems(): {name:string,years:string,description:string,pic
           name:'Circa',
           years:"2015",
           description:"Created an HTML5 multiplayer board game",
-          picture:"http://mikestonecodes.github.io/circa.jpg",
+          picture:"https://i.imgur.com/2rK1z8k.jpg",
           title:'Senior Technical Lead',
               link:"http://45.55.2.124/"
         },
         {name:'GoodMoney',
          years:"2013-2014",
          description:"Designed web app for sharing bank transactions",
-          picture:"http://mikestonecodes.github.io/goodmoney.jpg",
+          picture:"https://i.imgur.com/Bwj0yUs.jpg",
           title:'Senior Technical Lead',
               link:"http://goodmoney.co"
      },
@@ -54,7 +54,7 @@ export function getListItems(): {name:string,years:string,description:string,pic
           name:'InTheMixRadio',
           years:"2012",
           description:"Ran an internet radio platform on iOS, Android and web ",
-            picture:"http://mikestonecodes.github.io/inthemixradio.jpg",
+            picture:"https://i.imgur.com/VxIJdQa.jpg",
               title:'Senior Technical Lead',
               link:"http://inthemixradio.com"
 
@@ -64,7 +64,7 @@ export function getListItems(): {name:string,years:string,description:string,pic
           name:'Hellawack',
           years:"2007-2008",
           description:"Owned website that paired artists and game developers",
-            picture:"http://mikestonecodes.github.io/hellawack.jpg",
+            picture:"https://i.imgur.com/u0UWpZ2.jpg",
           title:'Owner',
           link:""
 
@@ -72,7 +72,7 @@ export function getListItems(): {name:string,years:string,description:string,pic
         {name:'Matrix Rayne',
         years:"2004",
         description:"Modified flash game, generating tens of thousands of plays",
-          picture:"http://mikestonecodes.github.io/matrixrayne.jpg",
+          picture:"https://i.imgur.com/Nq2kKBb.jpg",
             title:'Programmer',
             link:"https://www.youtube.com/watch?v=5tOmeJJEkDM&t=120s"
         }
