@@ -32,11 +32,12 @@ createServer(async (req, res) => {
   compress(useDefaultOptions)(req,res,noop) // mutates the response object
 
     let { httpVersion, method, url } = req;
-    console.log(`${httpVersion} ${method} ${url}`);
+
     if (!url || url === '/') {
         url = 'index.html';
     }
     try {
+
         if (url === 'index.html') {
 
             res.setHeader('Content-Type', lookup(url));
@@ -47,7 +48,7 @@ createServer(async (req, res) => {
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="${faviconUrl}" rel="icon" type="image/x-icon" />
-                <link rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+                <link  onload="if(media!='all')media='all'"  async async rel="stylesheet"href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
 
                 <title>Mike Stone Codes</title>
 
@@ -71,17 +72,21 @@ createServer(async (req, res) => {
         } else if (url === reactUrl || url === reactDomUrl) {
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
+                  res.setHeader('Content-Encoding','gzip' );
             const name = url.replace('.js', '');
             const file = `./node_modules${name}/umd${name}${suffix}`;
             createReadStream(file).pipe(zlib.createGzip()).pipe(res);
         } else if (url === stylesUrl) {
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
+                  res.setHeader('Content-Encoding','gzip' );
             const file = `./src/${url}`;
             createReadStream(file).pipe(zlib.createGzip()).pipe(res);
         } else if (url === browserUrl || url === browserMapUrl){
+
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
+            res.setHeader('Content-Encoding','gzip' );
             const file = `./dist${url}`;
             createReadStream(file).pipe(zlib.createGzip()).pipe(res);
         } else {
