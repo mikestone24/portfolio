@@ -39,7 +39,7 @@ createServer(async (req, res) => {
         url = 'index.html';
     }
     try {
-
+        console.log(url)
         if (url === 'index.html') {
            const css = new Set();
 
@@ -86,8 +86,9 @@ createServer(async (req, res) => {
                   res.setHeader('Content-Encoding','gzip' );
             const file = `./src/${url}`;
             createReadStream(file).pipe(zlib.createGzip()).pipe(res);
-        } else if (url === browserUrl || url === browserMapUrl){
 
+        } else if (url === browserUrl || url === browserMapUrl || url.split('.')[1]=="ttf"|| url.split('.')[1]=="woff2" || url.split('.')[1]=="woff"){
+            console.log("HERE")
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
             res.setHeader('Content-Encoding','gzip' );

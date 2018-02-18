@@ -7,6 +7,9 @@ const data: { [ext: string]: string } = {
     '.css': 'text/css',
     '.html': 'text/html',
     '.txt': 'text/plain',
+    '.woff': 'application/x-font-woff',
+    '.woff2': 'application/x-font-woff',
+    '.ttf': 'application/x-font-ttf'
 };
 
 export function lookup(path: string): string {

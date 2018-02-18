@@ -33,6 +33,7 @@ module.exports = [
              test:/\.(s*)css$/,
             loader:'isomorphic-style-loader!css-loader?minimize=true!sass-loader'
           },
+
                 {
                     test: /\.tsx?$/,
                     loader: 'awesome-typescript-loader',
