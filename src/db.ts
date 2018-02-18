@@ -62,10 +62,10 @@ export function getListItems(): {name:string,years:string,description:string,pic
         {
 
           name:'Hellawack',
-          years:"2007-2008",
+          years:"2006-2010",
           description:"Owned website that paired artists and game developers",
             picture:"https://i.imgur.com/u0UWpZ2.jpg",
-          title:'Owner',
+          title:'Founder',
           link:""
 
       },
