@@ -26,7 +26,7 @@ export default class App extends React.Component<AppProps, AppState> {
         // App component has fully mounted on the DOM
         this.state = { listItems: this.props.listItems, disabled: true , visible:false};
     }
-  
+
     // Once the App component has been mounted, we can enable the button
     componentDidMount() {
         this.setState({ disabled: false });
