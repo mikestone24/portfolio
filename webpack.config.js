@@ -1,7 +1,7 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
-  const UglifyJsPlugin  = require('uglifyjs-webpack-plugin');
+
 module.exports = [
     {
         entry: {
