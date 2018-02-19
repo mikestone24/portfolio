@@ -45,9 +45,13 @@ createServer(async (req, res) => {
     try {
         if (url === 'index.html') {
            const css = new Set();
+           var zlibStream = zlib.createGzip()
+           zlibStream._flush = zlib.Z_SYNC_FLUSH
+            zlibStream.pipe(res)
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 1));
-            res.write(`<!DOCTYPE html>
+            res.setHeader('Content-Encoding','gzip' );
+            zlibStream.write(`<!DOCTYPE html>
             <html>
             <head>
                 <meta charset="utf-8" />
@@ -60,16 +64,17 @@ createServer(async (req, res) => {
               <div id="${containerId}">`
             );
 
-            const stream = renderToNodeStream(AppFactory(fetchProps()));
-            stream.pipe(res, { end: false });
-            stream.on('end', () => {
-                res.end(`</div>
+            const reactStream = renderToNodeStream(AppFactory(fetchProps()));
+            reactStream.pipe(zlibStream, { end: false });
+            reactStream.on('end', () => {
+                zlibStream.end(`</div>
                 <script src="${reactUrl}"></script>
                 <script src="${reactDomUrl}"></script>
                 <script src="${browserUrl}"></script>
                 </body>
                 </html>`
                 );
+
             });
 
         } else if (url === propsUrl) {
