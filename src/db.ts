@@ -24,7 +24,7 @@ export function getListItems(): timelineItem[] {
             name: 'firehoseproject',
             years: "2016",
             description: "Took an online class focused on ruby on rails and unit tests",
-            picture: "http://mikestonecodes.github.io/firehose.jpg",
+            picture: "https://i.imgur.com/8EAwMdz.jpg",
             title: 'Student',
             link: "http://firehoseproject.com"
         },
@@ -48,7 +48,7 @@ export function getListItems(): timelineItem[] {
             name: 'Trext',
             years: "2013",
             description: "Developed text message to XMPP node.js backend service",
-            picture: "http://mikestonecodes.github.io/trext.jpg",
+            picture: "https://i.imgur.com/8RpqShD.jpg",
             title: 'Contractor',
             link: "http://trext.me/"
         },

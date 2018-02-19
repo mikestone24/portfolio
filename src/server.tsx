@@ -35,10 +35,10 @@ console.log('Production optimization enabled? ', isProd);
 const AppFactory = createFactory(App);
 const PORT = process.env.PORT || 3007;
 const suffix = isProd ? '.production.min.js' : '.development.js';
-
+var vary = require('vary')
 createServer(async (req, res) => {
     let { httpVersion, method, url } = req;
-
+    vary(res, ' Accept-Encoding')
     if (!url || url === '/') {
         url = 'index.html';
     }

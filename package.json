@@ -32,6 +32,7 @@
     "semantic-ui-react": "^0.77.2",
     "semantic-ui-sass": "^2.2.11",
     "style-loader": "^0.20.1",
+    "vary": "^1.1.2",
     "zlib": "^1.0.5"
   },
   "devDependencies": {
