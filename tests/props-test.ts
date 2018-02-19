@@ -6,7 +6,5 @@ test('fetchProps', t => {
     const props = fetchProps();
     t.true(!!props);
     t.true(!!props.listItems);
-
     t.equal(props.listItems.length, 5);
-    
 });

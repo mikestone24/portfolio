@@ -3,14 +3,21 @@ import { createFactory } from 'react';
 import { renderToNodeStream } from 'react-dom/server';
 import { createReadStream } from 'fs';
 import App from './components/app';
-import { fetchProps } from './props';
 import { lookup } from './mime-types';
-import { control } from './cache-control';
+import { fetchProps } from './props';
+import { getListItems } from './db';
+
+export function control(isProd: boolean, days: number): string {
+    if (days === 0 || !isProd) {
+        return 'public, no-cache, no-store, must-revalidate';
+    }
+    const sec = days * 24 * 60 * 60;
+    return `public, max-age=${sec}`;
+}
 
 const styles= require('./styles/index.scss');
 var zlib = require('zlib');
-var compress = require("compression")
-//import './styles/index.scss';
+
 import {
     faviconUrl,
     stylesUrl,
@@ -30,20 +37,14 @@ const PORT = process.env.PORT || 3007;
 const suffix = isProd ? '.production.min.js' : '.development.js';
 
 createServer(async (req, res) => {
-  var noop = function(){}, useDefaultOptions = {}
-  compress(useDefaultOptions)(req,res,noop) // mutates the response object
-
     let { httpVersion, method, url } = req;
 
     if (!url || url === '/') {
         url = 'index.html';
     }
     try {
-        console.log(url)
         if (url === 'index.html') {
            const css = new Set();
-
-
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 1));
             res.write(`<!DOCTYPE html>
@@ -52,12 +53,12 @@ createServer(async (req, res) => {
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="${faviconUrl}" rel="icon" type="image/x-icon" />
-
                 <title>Mike Stone Codes</title>
                  <style type="text/css">${styles._getCss()}</style>
             </head>
             <body>
-            <div id="${containerId}">`);
+              <div id="${containerId}">`
+            );
 
             const stream = renderToNodeStream(AppFactory(fetchProps()));
             stream.pipe(res, { end: false });
@@ -66,9 +67,11 @@ createServer(async (req, res) => {
                 <script src="${reactUrl}"></script>
                 <script src="${reactDomUrl}"></script>
                 <script src="${browserUrl}"></script>
-            </body>
-            </html>`);
+                </body>
+                </html>`
+                );
             });
+
         } else if (url === propsUrl) {
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 0));
@@ -76,19 +79,17 @@ createServer(async (req, res) => {
         } else if (url === reactUrl || url === reactDomUrl) {
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
-                  res.setHeader('Content-Encoding','gzip' );
+            res.setHeader('Content-Encoding','gzip' );
             const name = url.replace('.js', '');
             const file = `./node_modules${name}/umd${name}${suffix}`;
             createReadStream(file).pipe(zlib.createGzip()).pipe(res);
         } else if (url === stylesUrl) {
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
-                  res.setHeader('Content-Encoding','gzip' );
+            res.setHeader('Content-Encoding','gzip' );
             const file = `./src/${url}`;
             createReadStream(file).pipe(zlib.createGzip()).pipe(res);
-
         } else if (url === browserUrl || url === browserMapUrl || url.split('.')[1]=="ttf"|| url.split('.')[1]=="woff2" || url.split('.')[1]=="woff"){
-            console.log("HERE")
             res.setHeader('Content-Type', lookup(url));
             res.setHeader('Cache-Control', control(isProd, 7));
             res.setHeader('Content-Encoding','gzip' );
