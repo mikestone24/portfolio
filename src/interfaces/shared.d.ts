@@ -1,15 +1,15 @@
 interface timelineItem {
-  name: string,
-  years: string,
-  description: string,
-  picture: string,
-  title: string,
-  link: string
+    name: string,
+    years: string,
+    description: string,
+    picture: string,
+    title: string,
+    link: string
 }
 interface AppProps {
-    listItems:timelineItem[]
+    listItems: timelineItem[]
 }
 interface timelineCardProps {
-    listItem:timelineItem,
-    cardIndex:number,
+    listItem: timelineItem,
+    cardIndex: number,
 }

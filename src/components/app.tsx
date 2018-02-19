@@ -27,7 +27,7 @@ export default class App extends React.Component<AppProps, AppProps> {
 
         let timeline = <section id='timeline'>
             <div className="demo-card-wrapper">
-              { this.state.listItems.map((card, index) => <Project card={card} index={index} key={"project"+index} />) }
+                {this.state.listItems.map((card, index) => <Project card={card} index={index} key={"project" + index} />)}
             </div>
         </section>
 
@@ -66,11 +66,13 @@ export default class App extends React.Component<AppProps, AppProps> {
                     <Divider inverted />
                     <Label.Group size='big' className='skills' style={{ marginTop: '10px' }}  >
                         {
-                            ['react.js', 'html5', 'canvas', 'phaser', 'node.js', 'php', 'javascript', 'ruby on rails', 'mongodb', 'redis', 'svg', 'websockets'].map((card, inde) =>
+                            ['react.js', 'html5', 'canvas', 'phaser', 'node.js', 'php',
+                            'javascript', 'ruby on rails', 'mongodb',
+                            'redis', 'svg', 'websockets'].map((card, inde) =>
                                 <Label basic
                                     className={colors[inde % colors.length]}
                                     style={{ boxShadow: "0px 1px 22px 4px rgba(0, 0, 0, 0.07)" }}
-                                    key={"skill"+inde}
+                                    key={"skill" + inde}
                                 >{card}</Label>
                             )
                         }
